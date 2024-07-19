@@ -1,0 +1,74 @@
+/* LoginCSS.css */
+
+/* Style for the GridPane */
+.grid-pane {
+    -fx-background-color: #ffffff;
+    -fx-padding: 20;
+    -fx-hgap: 10;
+    -fx-vgap: 10;
+    -fx-border-color: #d3d3d3;
+    -fx-border-width: 2;
+    -fx-border-radius: 10;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, 0, 0);
+}
+
+/* Style for Labels */
+.label {
+    -fx-font-size: 16px;
+    -fx-text-fill: #333;
+    -fx-font-weight: bold;
+}
+
+/* Style for TextFields */
+.text-field {
+    -fx-background-color: #f4f4f4;
+    -fx-border-color: #b3b3b3;
+    -fx-border-radius: 5;
+    -fx-padding: 10;
+    -fx-font-size: 14px;
+    -fx-prompt-text-fill: #888;
+    -fx-focus-color: #4a90e2;
+}
+
+/* Style for PasswordFields */
+.password-field {
+    -fx-background-color: #f4f4f4;
+    -fx-border-color: #b3b3b3;
+    -fx-border-radius: 5;
+    -fx-padding: 10;
+    -fx-font-size: 14px;
+    -fx-prompt-text-fill: #888;
+    -fx-focus-color: #4a90e2;
+}
+
+/* Style for Buttons */
+.button {
+    -fx-background-color: #4a90e2;
+    -fx-text-fill: #fff;
+    -fx-padding: 10 20;
+    -fx-border-radius: 5;
+    -fx-font-size: 14px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 5, 0, 0, 0);
+}
+
+.button:hover {
+    -fx-background-color: #357abd;
+}
+
+.button:pressed {
+    -fx-background-color: #2a5f8a;
+}
+
+/* Style for the Login Button specifically */
+#login {
+    -fx-background-color: #4caf50;
+}
+
+#login:hover {
+    -fx-background-color: #388e3c;
+}
+
+#login:pressed {
+    -fx-background-color: #2e7d32;
+}

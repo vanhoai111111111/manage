@@ -10,27 +10,19 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<GridPane fx:id="gridPane" prefHeight="194.0" prefWidth="364.0" stylesheets="@../CSS/LoginCSS.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="com.example.manage.Controller.LoginController">
-    <padding><Insets bottom="10" left="10" right="10" top="10" /></padding>
+<?import javafx.scene.layout.BorderPane?>
+<BorderPane fx:id="borderPane" prefHeight="200.0" prefWidth="400.0" stylesheets="@../CSS/LoginCSS.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="com.example.manage.Controller.LoginController">
+
+    <top>
+        <GridPane>
+            <Label fx:id="usernameLabel"  GridPane.columnIndex="0" GridPane.rowIndex="0" text="%login.username" />
+            <TextField fx:id="usernameField" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+            <Label fx:id="passwordLabel" GridPane.columnIndex="0" GridPane.rowIndex="1" text="%login.password" />
+            <PasswordField fx:id="passwordField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Button fx:id="loginButton" onAction="#handleLogin" GridPane.columnIndex="1" GridPane.rowIndex="2" text="%login.button" />
+        </GridPane>
+    </top>
 
 
+</BorderPane>
 
-    <Label fx:id="usernameLabel" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-    <TextField fx:id="usernameField" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-    <Label fx:id="passwordLabel" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-    <PasswordField fx:id="passwordField" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-    <Button fx:id="loginButton" onAction="#handleLogin" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-    <ComboBox fx:id="languageSelector" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-   <columnConstraints>
-      <ColumnConstraints />
-      <ColumnConstraints />
-      <ColumnConstraints />
-   </columnConstraints>
-   <rowConstraints>
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-   </rowConstraints>
-</GridPane>

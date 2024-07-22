@@ -43,6 +43,12 @@ public class duanController {
    private TextField tennvTextField;
 
    @FXML
+   private Main mainApp;
+
+
+
+
+   @FXML
    public void initialize() {
       idColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get("id")));
       tenduan.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get("tenduan")));
@@ -57,7 +63,9 @@ public class duanController {
          showduan(newValue); // newValue is the newly selected map
       });
    }
-
+   public void setMainApp(Main mainApp) {
+      this.mainApp = mainApp;
+   }
    private void loadduanData() {
       DatabaseUtil.loadduanData(duanData);
    }

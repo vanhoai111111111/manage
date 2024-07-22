@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.HBox?>
+
+<?import java.net.URL?>
+<BorderPane   xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.manage.Controller.duanController">
+
+    <center>
+        <TableView fx:id="duan">
+            <columns>
+                <TableColumn fx:id="idColumn" prefWidth="100" text="%project.projectId" />
+                <TableColumn fx:id="tenduan" prefWidth="150" text="%project.projectName" />
+                <TableColumn fx:id="tennv" prefWidth="150" text="%project.employee" />
+            </columns>
+        </TableView>
+    </center>
+
+    <!-- Phần dưới chứa các Label, TextField và Button -->
+    <bottom>
+        <VBox>
+            <Label text="%project.projectId" />
+            <TextField fx:id="idduanTextField" />
+
+            <Label text="%project.projectName" />
+            <TextField fx:id="tenduanTextField" />
+
+            <Label text="%project.employee" />
+            <TextField fx:id="tennvTextField" />
+
+            <HBox >
+                <Button onAction="#addProject" mnemonicParsing="false" text="Thêm" />
+                <Button onAction="#btndelete" mnemonicParsing="false" text="Xóa" />
+                <Button mnemonicParsing="false" text="Sửa thông tin" />
+                <Button mnemonicParsing="false" text="Quay lại" />
+            </HBox>
+        </VBox>
+    </bottom>
+</BorderPane>

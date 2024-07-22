@@ -7,32 +7,45 @@
 <?import javafx.scene.layout.*?>
 
 <?import javafx.scene.text.Font?>
-<AnchorPane xmlns="http://javafx.com/javafx"
+<?import javafx.geometry.Insets?>
+<BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.example.manage.Controller.DashboardController"
-            prefHeight="400.0" prefWidth="600.0">
-    <children>
-
-        <Label layoutX="177.0" layoutY="14.0" prefHeight="33.0" prefWidth="365.0" text="Quản lý nhân sự " textFill="#fc1414">
+            prefHeight="400.0" prefWidth="600.0"
+            stylesheets="@../CSS/Dashboard.css">
+    <!-- Top section -->
+    <top>
+        <Label text="%dashboard.title" textFill="#fc1414">
             <font>
                 <Font size="48.0" />
             </font>
         </Label>
-        <Button fx:id="Project"  onAction="#duan" layoutX="14.0" layoutY="133.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="140.0"  >
-            <font>
-                <Font name="System Bold" size="18.0" />
-            </font>
-        </Button>
-        <Button fx:id= "Department" onAction="#phongban" layoutX="14.0" layoutY="190.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="140.0"  >
-            <font>
-                <Font name="System Bold" size="16.0" />
-            </font>
-        </Button>
-        <Button fx:id="employee" layoutX="14.0" layoutY="246.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="140.0" >
-            <font>
-                <Font name="System Bold" size="16.0" />
-            </font>
-        </Button>
-    </children>
-    <ComboBox fx:id="languageSelector"  />
-</AnchorPane>
+    </top>
+
+    <!-- Center section -->
+    <center>
+        <VBox spacing="10" alignment="CENTER" >
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <Button fx:id="Project" text="%dashboard.project" onAction="#Project" mnemonicParsing="false" prefHeight="39.0" prefWidth="140.0">
+                <font>
+                    <Font name="System Bold" size="18.0" />
+                </font>
+
+            </Button>
+            <Button fx:id="Department" text="%dashboard.department" onAction="#Department" mnemonicParsing="false" prefHeight="37.0" prefWidth="140.0">
+                <font>
+                    <Font name="System Bold" size="16.0" />
+                </font>
+
+            </Button>
+            <Button fx:id="employee" text="%dashboard.employee" mnemonicParsing="false" prefHeight="37.0" prefWidth="140.0">
+                <font>
+                    <Font name="System Bold" size="16.0" />
+                </font>
+
+            </Button>
+        </VBox>
+    </center>
+</BorderPane>

@@ -1,18 +1,8 @@
 package com.example.manage.Controller;
 
-import com.example.manage.Controller.Main;
-import com.example.manage.Model.DatabaseUtil;
-import com.example.manage.Model.LanguageUtil;
-import com.example.manage.Model.LanguageUtil;
+import com.example.manage.Model.projectModel;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.stage.Stage;
-
-import java.io.IOException;
-import java.util.Locale;
 
 public class LoginController {
 
@@ -45,7 +35,7 @@ public class LoginController {
         String username = usernameField.getText();
         String password = passwordField.getText();
 
-        if (DatabaseUtil.validateLogin(username, password)) {
+        if (projectModel.validateLogin(username, password)) {
             // Login successful
             mainApp.showMainPage();
         } else {

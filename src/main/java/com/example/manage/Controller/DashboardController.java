@@ -1,17 +1,6 @@
 package com.example.manage.Controller;
 
-import com.example.manage.Model.LanguageUtil;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.stage.Stage;
-import com.example.manage.Controller.Main;
-import java.io.IOException;
-import java.util.Locale;
 
 public class DashboardController {
 

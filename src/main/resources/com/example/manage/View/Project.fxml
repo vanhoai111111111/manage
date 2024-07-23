@@ -14,11 +14,11 @@
 <BorderPane   xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.manage.Controller.duanController">
 
     <center>
-        <TableView fx:id="duan">
+        <TableView fx:id="project">
             <columns>
-                <TableColumn fx:id="idColumn" prefWidth="100" text="%project.projectId" />
-                <TableColumn fx:id="tenduan" prefWidth="150" text="%project.projectName" />
-                <TableColumn fx:id="tennv" prefWidth="150" text="%project.employee" />
+                <TableColumn fx:id="idproject" prefWidth="100" text="%project.projectId" />
+                <TableColumn fx:id="projectName" prefWidth="150" text="%project.projectName" />
+                <TableColumn fx:id="employeeName" prefWidth="150" text="%project.employee" />
             </columns>
         </TableView>
     </center>
@@ -38,8 +38,8 @@
             <HBox >
                 <Button onAction="#addProject" mnemonicParsing="false" text="Thêm" />
                 <Button onAction="#btndelete" mnemonicParsing="false" text="Xóa" />
-                <Button mnemonicParsing="false" text="Sửa thông tin" />
-                <Button mnemonicParsing="false" text="Quay lại" />
+                <Button onAction="#btnupdate" mnemonicParsing="false" text="Sửa thông tin" />
+                <Button  mnemonicParsing="false" text="Quay lại" />
             </HBox>
         </VBox>
     </bottom>

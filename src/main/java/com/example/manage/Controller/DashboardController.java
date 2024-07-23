@@ -14,10 +14,10 @@ public class DashboardController {
         this.mainApp = mainApp;
     }
     public void Project (ActionEvent event) {
-        mainApp.showproject();
+        mainApp.showProject();
     }
     public void Department (ActionEvent event) {
-        mainApp.showdepartment();
+        mainApp.showDepartment();
 
     }
 

@@ -6,6 +6,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -68,6 +69,7 @@ public class duanController {
    }
    public void setMainApp(Main mainApp) {
       this.mainApp = mainApp;
+      this.bundle = mainApp.getBundle(); // Lấy ResourceBundle từ mainApp
    }
    private void loadduanData() {
       projectModel.loadduanData(duanData);
@@ -88,11 +90,17 @@ if (idduanTextField.getText().isEmpty() || tenduanTextField.getText().isEmpty() 
 
       // Add to database
       addproject(newProject);
+      Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
+      successAlert.setTitle(bundle.getString("notification.title"));
+      successAlert.setHeaderText(null);
+      successAlert.setContentText(bundle.getString("notification.success"));
+      successAlert.showAndWait();
    }
 
    public void btndelete(ActionEvent event) {
       Map<String, String> selectedItem = project.getSelectionModel().getSelectedItem();
-
+      FXMLLoader loader = new FXMLLoader();
+      loader.setResources(bundle);
       if (selectedItem != null) {
          // Remove from TableView
          duanData.remove(selectedItem);
@@ -102,13 +110,15 @@ if (idduanTextField.getText().isEmpty() || tenduanTextField.getText().isEmpty() 
          Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
          successAlert.setTitle(bundle.getString("notification.title"));
          successAlert.setHeaderText(null);
-         successAlert.setContentText(bundle.getString("notification.content"));
+         successAlert.setContentText(bundle.getString("notification.success"));
          successAlert.showAndWait();
       }
    }
 
    public void btnupdate(ActionEvent event) {
       Map<String, String> selectedItem = project.getSelectionModel().getSelectedItem();
+      FXMLLoader loader = new FXMLLoader();
+      loader.setResources(bundle);
       if (selectedItem != null) {
          try {
             int projectId = Integer.parseInt(idduanTextField.getText().trim()); // Loại bỏ khoảng trắng và chuyển đổi
@@ -126,11 +136,11 @@ if (idduanTextField.getText().isEmpty() || tenduanTextField.getText().isEmpty() 
 
             // Cập nhật lại TableView
             project.setItems(duanData);
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Thành công");
-            alert.setHeaderText(null);
-            alert.setContentText("Cập nhật thông tin dự án thành công!");
-            alert.showAndWait();
+            Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
+            successAlert.setTitle(bundle.getString("notification.title"));
+            successAlert.setHeaderText(null);
+            successAlert.setContentText(bundle.getString("notification.success"));
+            successAlert.showAndWait();
          } catch (NumberFormatException e) {
             // Hiển thị thông báo lỗi cho người dùng
             Alert alert = new Alert(Alert.AlertType.ERROR);

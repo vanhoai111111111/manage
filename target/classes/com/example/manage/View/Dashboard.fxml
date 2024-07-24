@@ -14,17 +14,14 @@
             prefHeight="400.0" prefWidth="600.0"
             stylesheets="@../CSS/Dashboard.css">
     <!-- Top section -->
-    <top>
-        <Label text="%dashboard.title" textFill="#fc1414">
-            <font>
-                <Font size="48.0" />
-            </font>
-        </Label>
-    </top>
+
 
     <!-- Center section -->
     <center>
         <VBox spacing="10" alignment="CENTER" >
+            <Label fx:id="dashboard" text="%dashboard.title" >
+
+            </Label>
             <padding>
                 <Insets top="10" right="10" bottom="10" left="10"/>
             </padding>
@@ -34,6 +31,7 @@
                 </font>
 
             </Button>
+
             <Button fx:id="Department" text="%dashboard.department" onAction="#Department" mnemonicParsing="false" prefHeight="37.0" prefWidth="140.0">
                 <font>
                     <Font name="System Bold" size="16.0" />

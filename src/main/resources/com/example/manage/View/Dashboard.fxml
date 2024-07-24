@@ -19,10 +19,8 @@
     <!-- Center section -->
     <center>
         <VBox spacing="10" alignment="CENTER" >
-            <Label fx:id="dashboard" text="%dashboard.title" textFill="#fc1414">
-                <font>
-                    <Font size="48.0" />
-                </font>
+            <Label fx:id="dashboard" text="%dashboard.title" >
+
             </Label>
             <padding>
                 <Insets top="10" right="10" bottom="10" left="10"/>

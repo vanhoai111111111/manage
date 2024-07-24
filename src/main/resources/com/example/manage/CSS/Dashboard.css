@@ -1,3 +1,6 @@
-.dashboard{
+#dashboard {
+    -fx-text-fill: #f60303; /* Đặt màu chữ nếu cần */
+    -fx-font-size: 40px; /* Đặt kích thước font nếu cần */
+    -fx-font-weight: bold; /* Đặt độ dày font nếu cần */
     -fx-text-transform: uppercase;
 }

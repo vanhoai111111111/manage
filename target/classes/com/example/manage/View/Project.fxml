@@ -6,15 +6,16 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<?import java.net.URL?>
-<BorderPane   xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.manage.Controller.duanController">
+<?import javafx.scene.control.ComboBox?>
+<BorderPane prefHeight="551.0" prefWidth="403.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.manage.Controller.duanController">
 
     <center>
-        <TableView fx:id="project">
+        <TextField fx:id="searchField" onAction="#handleSearch" />
+        <Button layoutX="220" layoutY="14" onAction="#handleSearch" text="Tìm kiếm" />
+        <TableView fx:id="project" prefHeight="400.0" prefWidth="471.0">
             <columns>
                 <TableColumn fx:id="idproject" prefWidth="100" text="%project.projectId" />
                 <TableColumn fx:id="projectName" prefWidth="150" text="%project.projectName" />
@@ -27,19 +28,19 @@
     <bottom>
         <VBox>
             <Label text="%project.projectId" />
-            <TextField fx:id="idduanTextField" />
+            <TextField fx:id="idduanTextField" prefWidth="622.0" />
 
             <Label text="%project.projectName" />
-            <TextField fx:id="tenduanTextField" />
+            <TextField fx:id="tenduanTextField" prefWidth="622.0" />
 
             <Label text="%project.employee" />
-            <TextField fx:id="tennvTextField" />
+            <ComboBox fx:id="employeeComboBox" prefWidth="622.0" />
 
-            <HBox >
-                <Button onAction="#addProject" mnemonicParsing="false" text="Thêm" />
-                <Button onAction="#btndelete" mnemonicParsing="false" text="Xóa" />
-                <Button onAction="#btnupdate" mnemonicParsing="false" text="Sửa thông tin" />
-                <Button  mnemonicParsing="false" text="Quay lại" />
+            <HBox>
+                <Button mnemonicParsing="false" onAction="#addProject" text="Thêm" />
+                <Button mnemonicParsing="false" onAction="#btndelete" text="Xóa" />
+                <Button mnemonicParsing="false" onAction="#btnupdate" text="Sửa thông tin" />
+                <Button mnemonicParsing="false" text="Xem chi tiết" onAction="#showProjectDetails" />
             </HBox>
         </VBox>
     </bottom>

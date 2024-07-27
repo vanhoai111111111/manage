@@ -38,7 +38,7 @@
                 </font>
 
             </Button>
-            <Button fx:id="employee" text="%dashboard.employee" mnemonicParsing="false" prefHeight="37.0" prefWidth="140.0">
+            <Button fx:id="employee" text="%dashboard.employee" onAction="#Employee" mnemonicParsing="false" prefHeight="37.0" prefWidth="140.0">
                 <font>
                     <Font name="System Bold" size="16.0" />
                 </font>

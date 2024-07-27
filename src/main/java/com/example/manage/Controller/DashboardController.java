@@ -20,6 +20,9 @@ public class DashboardController {
         mainApp.showDepartment();
 
     }
+    public void Employee (ActionEvent event) {
+        mainApp.showEmployee();
+    }
 
 }
 

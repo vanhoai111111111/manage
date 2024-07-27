@@ -1,14 +1,19 @@
 package com.example.manage.Controller;
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 public class Main extends Application {
@@ -134,8 +139,53 @@ public class Main extends Application {
             e.printStackTrace();
         }
     }
+
+    public void showProjectDetails(Map<String, String> selectedItem) {
+        if (selectedItem != null) {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/manage/View/projectDetails.fxml"));
+                loader.setResources(bundle);
+                Parent root = loader.load();
+
+                ProjectDetailsController controller = loader.getController();
+                controller.setProjectDetails(selectedItem);
+
+                Stage stage = new Stage();
+                primaryStage.setTitle(bundle.getString("dashboard.title"));
+                stage.initModality(Modality.WINDOW_MODAL);
+                stage.initOwner(primaryStage);
+                stage.setScene(new Scene(root));
+                primaryStage.sizeToScene(); // Tự động cập nhật kích thước
+                stage.showAndWait();
+            } catch (IOException e) {
+                e.printStackTrace();
+
+            }
+        }
+    }
+    public void showEmployee (){
+        try{
+            FXMLLoader loader = new FXMLLoader();
+            loader.setResources(bundle);
+            loader.setLocation(Main.class.getResource("/com/example/manage/View/Employee.fxml"));
+            primaryStage.setTitle(bundle.getString("dashboard.title"));
+            BorderPane mainPage = loader.load();
+
+            EmployeeController controller = loader.getController();
+            controller.setMainApp(this);
+
+            rootLayout.setCenter(mainPage);
+            primaryStage.sizeToScene();
+
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+    }
     public ResourceBundle getBundle() {
         return bundle;
+    }
+    public Stage getPrimaryStage() {
+        return primaryStage;
     }
     public static void main(String[] args) {
         launch(args);

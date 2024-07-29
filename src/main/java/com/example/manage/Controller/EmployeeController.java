@@ -34,6 +34,9 @@ public class EmployeeController {
     private ObservableList<Map<String, String>> Employeedata;
 
     @FXML
+    private TextField searchField;
+
+    @FXML
     private TextField employeeIDTextField;
 
     @FXML
@@ -68,6 +71,7 @@ public class EmployeeController {
         employeeTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             showemployeeintextfield(newValue);
         });
+        loadEmployeeData("");
     }
 
     public void addEmployee(ActionEvent event) {
@@ -87,7 +91,7 @@ public class EmployeeController {
         showSuccessAlert(bundle.getString("notification.success"));
         clearFields();
     }
-public void btndeleteEmployee(ActionEvent event) {
+    public void btndeleteEmployee(ActionEvent event) {
         Map<String, String> SelectedItem = employeeTable.getSelectionModel().getSelectedItem();
         if (SelectedItem != null) {
             Employeedata.remove(SelectedItem);
@@ -95,7 +99,7 @@ public void btndeleteEmployee(ActionEvent event) {
             deleteemployee(SelectedItem);
 
         }
-}
+    }
     private void showErrorAlert(String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Lỗi");
@@ -172,4 +176,26 @@ public void btndeleteEmployee(ActionEvent event) {
         }
 
     }
+    @FXML
+    private void handleShowDetails(Map<String, String> selectedEmployee) {
+        if (selectedEmployee != null) {
+            mainApp.showEmployeeDetails(selectedEmployee);
+        }
+    }
+    public void setEmployeeData(ObservableList<Map<String, String>> employeeData) {
+        employeeTable.setItems(employeeData);
+    }
+    public void showEmployeeDetails(ActionEvent event) {
+        Map<String, String> selectedItem = employeeTable.getSelectionModel().getSelectedItem();
+        handleShowDetails(selectedItem);
+    }
+    public void loadEmployeeData(String keyword){
+
+        employeeModel.loademployeedata(Employeedata, keyword);
+    }
+    public void handleSearch(ActionEvent event){
+
+        loadEmployeeData(searchField.getText().trim());
+    }
+
 }

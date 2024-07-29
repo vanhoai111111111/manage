@@ -122,7 +122,8 @@ public class projectModel {
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-    } public static ObservableList<String> getEmployeeNames() {
+    }
+    public static ObservableList<String> getEmployeeNames() {
         ObservableList<String> employeeNames = FXCollections.observableArrayList();
         String query = "SELECT DISTINCT employeeName FROM tblEmployee";
 

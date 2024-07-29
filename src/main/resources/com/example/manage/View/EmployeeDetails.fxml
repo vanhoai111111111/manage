@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+
+<GridPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.manage.Controller.EmployeeDetailsController">
+    <padding>
+        <Insets top="10" right="10" bottom="10" left="10"/>
+    </padding>
+    <columnConstraints>
+        <ColumnConstraints percentWidth="50"/>
+        <ColumnConstraints percentWidth="50"/>
+    </columnConstraints>
+    <Label text="Employee ID:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+    <Label fx:id="employeeIDLabel" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+    <Label text="Employee Name:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+    <Label fx:id="employeeNameLabel" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+    <Label text="Project Name:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+    <Label fx:id="projectNameLabel" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+    <Label text="Phone:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+    <Label fx:id="phoneLabel" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+</GridPane>

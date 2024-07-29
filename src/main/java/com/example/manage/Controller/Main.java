@@ -181,6 +181,7 @@ public class Main extends Application {
             e.printStackTrace();
         }
     }
+
     public ResourceBundle getBundle() {
         return bundle;
     }
@@ -189,5 +190,34 @@ public class Main extends Application {
     }
     public static void main(String[] args) {
         launch(args);
+    }
+    public void showEmployeeDetails(Map<String, String> employeeData) {
+        try {
+            // Tạo một FXMLLoader để tải file FXML của trang chi tiết nhân viên
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/manage/View/EmployeeDetails.fxml"));
+
+            // Tải giao diện từ file FXML
+            Parent root = loader.load();
+
+            // Lấy controller liên kết với file FXML
+            EmployeeDetailsController controller = loader.getController();
+
+            // Gọi phương thức setEmployeeDetails của controller để thiết lập thông tin nhân viên
+            controller.setEmployeeDetails(employeeData);
+
+            // Tạo một cửa sổ mới
+            Stage stage = new Stage();
+
+            // Đặt giao diện vào cửa sổ mới
+            stage.setScene(new Scene(root));
+
+            // Đặt tiêu đề cho cửa sổ
+            stage.setTitle("Employee Details");
+
+            // Hiển thị cửa sổ mới
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

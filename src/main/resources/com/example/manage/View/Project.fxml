@@ -11,10 +11,14 @@
 
 <?import javafx.scene.control.ComboBox?>
 <BorderPane prefHeight="551.0" prefWidth="403.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.manage.Controller.duanController">
-
+    <top>
+        <HBox spacing="10" alignment="CENTER">
+            <TextField fx:id="searchField" onAction="#handleSearch" />
+            <Button onAction="#handleSearch" text="Tìm kiếm" />
+        </HBox>
+    </top>
     <center>
-        <TextField fx:id="searchField" onAction="#handleSearch" />
-        <Button layoutX="220" layoutY="14" onAction="#handleSearch" text="Tìm kiếm" />
+
         <TableView fx:id="project" prefHeight="400.0" prefWidth="471.0">
             <columns>
                 <TableColumn fx:id="idproject" prefWidth="100" text="%project.projectId" />
@@ -37,10 +41,10 @@
             <ComboBox fx:id="employeeComboBox" prefWidth="622.0" />
 
             <HBox>
-                <Button mnemonicParsing="false" onAction="#addProject" text="Thêm" />
-                <Button mnemonicParsing="false" onAction="#btndelete" text="Xóa" />
-                <Button mnemonicParsing="false" onAction="#btnupdate" text="Sửa thông tin" />
-                <Button mnemonicParsing="false" text="Xem chi tiết" onAction="#showProjectDetails" />
+                <Button mnemonicParsing="false" onAction="#addProject" text="%button.add" />
+                <Button mnemonicParsing="false" onAction="#btndelete" text="%button.delete" />
+                <Button mnemonicParsing="false" onAction="#btnupdate" text="%button.edit" />
+                <Button mnemonicParsing="false" text="%button.showdetails" onAction="#showProjectDetails" />
             </HBox>
         </VBox>
     </bottom>

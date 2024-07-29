@@ -74,9 +74,7 @@ public class duanController {
       this.bundle = mainApp.getBundle(); // Lấy ResourceBundle từ mainApp
    }
 
-   private void loadduanData() {
-      projectModel.loadduanData(duanData);
-   }
+
 
    private void loadEmployeeNames() {
       ObservableList<String> employeeNames = projectModel.getEmployeeNames();
@@ -188,4 +186,5 @@ public class duanController {
       Map<String, String> selectedItem = project.getSelectionModel().getSelectedItem();
       mainApp.showProjectDetails(selectedItem);
    }
+
 }

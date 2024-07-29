@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.manage.Controller.DepartmentController"
+            prefHeight="400.0" prefWidth="600.0">
+    <top>
+        <HBox spacing="10" alignment="CENTER">
+            <TextField fx:id="searchField"  />
+            <Button  text="Tìm kiếm" />
+        </HBox>
+    </top>
+    <center>
+
+        <TableView fx:id="Department" prefHeight="400.0" prefWidth="471.0">
+            <columns>
+                <TableColumn fx:id="DepartmentId" prefWidth="100" text="%project.projectId" />
+                <TableColumn fx:id="DepartmentName" prefWidth="150" text="%project.projectName" />
+                <TableColumn fx:id="employeeName" prefWidth="150" text="%project.employee" />
+            </columns>
+        </TableView>
+    </center>
+
+    <!-- Phần dưới chứa các Label, TextField và Button -->
+    <bottom>
+        <VBox>
+            <Label text="%project.projectId" />
+            <TextField fx:id="DepartmentIDTextField" prefWidth="622.0" />
+
+            <Label text="%project.projectName" />
+            <TextField fx:id="tenduanTextField" prefWidth="622.0" />
+
+            <Label text="%project.employee" />
+            <ComboBox fx:id="employeeComboBox" prefWidth="622.0" />
+
+            <HBox>
+                <Button mnemonicParsing="false"  text="%button.add" />
+                <Button mnemonicParsing="false"  text="%button.delete" />
+                <Button mnemonicParsing="false"  text="%button.edit" />
+                <Button mnemonicParsing="false" text="%button.showdetails"  />
+            </HBox>
+        </VBox>
+    </bottom>
+
+</BorderPane>

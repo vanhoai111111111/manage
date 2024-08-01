@@ -37,14 +37,16 @@ public class LoginController {
         String password = passwordField.getText();
 
         int role = LoginModel.getRole(username, password);
-        if (role !=-1) {
-            // Login successful
-            mainApp.showMainPage();
+        if (role != -1) {
+            // Login successful, set role in Main
+            mainApp.setUserRole(role);
+            mainApp.showMainPage(); // Hoặc điều hướng đến trang chính
         } else {
             // Login failed
             showAlert("Error", "Invalid username or password.");
         }
     }
+
     public void setMainApp(Main mainApp) {
         this.mainApp = mainApp;
     }

@@ -71,7 +71,7 @@ public class DepartmentController {
         loadManager();
         loadDepartmentSearch("");
     DepartmentTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {showDepartmentintextfield(newValue);});
-
+    configureUserPermissions();
 }
     public void setUserRole(int role) {
 
@@ -79,12 +79,14 @@ public class DepartmentController {
         configureUserPermissions();
     }
     private void configureUserPermissions() {
-        if (userRole == 1) {
+        if (userRole ==1) {
             // Admin có thể thực hiện tất cả các chức năng
             addDepartmentButton.setDisable(false);
             deleteDepartmentButton.setDisable(false);
             editDepartmentButton.setDisable(false);
             showDepartmentDetailsButton.setDisable(false);
+
+
         } else {
             // Người dùng bình thường không thể thực hiện một số chức năng
             addDepartmentButton.setDisable(true);

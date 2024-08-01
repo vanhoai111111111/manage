@@ -21,12 +21,11 @@ public class Main extends Application {
     private BorderPane rootLayout;
     private Locale locale;
     private ResourceBundle bundle;
-
+    private int userRole; // Thêm biến để lưu trữ vai trò người dùng
 
     @Override
     public void start(Stage primaryStage) {
         this.primaryStage = primaryStage;
-
 
         // Tạo ComboBox để chọn ngôn ngữ
         ComboBox<String> languageComboBox = new ComboBox<>();
@@ -70,7 +69,6 @@ public class Main extends Application {
             FXMLLoader loader = new FXMLLoader();
             loader.setResources(bundle);
             loader.setLocation(Main.class.getResource("/com/example/manage/View/LoginView.fxml"));
-            primaryStage.setTitle(bundle.getString("dashboard.title"));
             BorderPane loginPage = loader.load();
 
             // Set the controller
@@ -90,11 +88,11 @@ public class Main extends Application {
             loader.setResources(bundle);
             loader.setLocation(Main.class.getResource("/com/example/manage/View/Dashboard.fxml"));
             BorderPane mainPage = loader.load();
-            primaryStage.setTitle(bundle.getString("dashboard.title"));
 
             // Set the controller
             DashboardController controller = loader.getController();
             controller.setMainApp(this);
+
 
             rootLayout.setCenter(mainPage);
             primaryStage.sizeToScene(); // Tự động cập nhật kích thước
@@ -114,6 +112,7 @@ public class Main extends Application {
             // Set the controller
             duanController controller = loader.getController();
             controller.setMainApp(this);
+            controller.setUserRole(userRole); // Truyền vai trò người dùng
 
             rootLayout.setCenter(mainPage);
             primaryStage.sizeToScene(); // Tự động cập nhật kích thước
@@ -133,6 +132,7 @@ public class Main extends Application {
             // Set the controller
             DepartmentController controller = loader.getController();
             controller.setMainApp(this);
+            controller.setUserRole(userRole); // Truyền vai trò người dùng
 
             rootLayout.setCenter(mainPage);
             primaryStage.sizeToScene(); // Tự động cập nhật kích thước
@@ -141,44 +141,18 @@ public class Main extends Application {
         }
     }
 
-    public void showProjectDetails(Map<String, String> SelectedDepartment) {
-        if (SelectedDepartment != null) {
+    public void showProjectDetails(Map<String, String> selectedProject) {
+        if (selectedProject != null) {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/manage/View/projectDetails.fxml"));
                 loader.setResources(bundle);
                 Parent root = loader.load();
 
                 ProjectDetailsController controller = loader.getController();
-                controller.setProjectDetails(SelectedDepartment);
+                controller.setProjectDetails(selectedProject);
 
                 Stage stage = new Stage();
-                primaryStage.setTitle(bundle.getString("dashboard.title"));
-                stage.initModality(Modality.WINDOW_MODAL);
-                stage.initOwner(primaryStage);
-                stage.setScene(new Scene(root));
-                primaryStage.sizeToScene(); // Tự động cập nhật kích thước
-                stage.showAndWait();
-            } catch (IOException e) {
-                e.printStackTrace();
-
-            }
-        }
-    }
-    public void showDepartmentDetails(Map<String, String> SelectedDepartment) {
-        if (SelectedDepartment != null) {
-            try {
-                // Tải FXML cho cửa sổ chi tiết
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/manage/View/departmentDetails.fxml"));
-                loader.setResources(bundle);
-                Parent root = loader.load();
-
-                // Cấu hình controller cho cửa sổ chi tiết
-                DepartmentDetailsController controller = loader.getController();
-                controller.setDepartmentDetails(SelectedDepartment);
-
-                // Tạo và hiển thị cửa sổ chi tiết
-                Stage stage = new Stage();
-                stage.setTitle(bundle.getString("dashboard.title")); // Đặt tiêu đề cửa sổ
+                stage.setTitle(bundle.getString("project.details.title"));
                 stage.initModality(Modality.WINDOW_MODAL);
                 stage.initOwner(primaryStage);
                 stage.setScene(new Scene(root));
@@ -190,8 +164,31 @@ public class Main extends Application {
         }
     }
 
-    public void showEmployee (){
-        try{
+    public void showDepartmentDetails(Map<String, String> selectedDepartment) {
+        if (selectedDepartment != null) {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/manage/View/departmentDetails.fxml"));
+                loader.setResources(bundle);
+                Parent root = loader.load();
+
+                DepartmentDetailsController controller = loader.getController();
+                controller.setDepartmentDetails(selectedDepartment);
+
+                Stage stage = new Stage();
+                stage.setTitle(bundle.getString("department.details.title"));
+                stage.initModality(Modality.WINDOW_MODAL);
+                stage.initOwner(primaryStage);
+                stage.setScene(new Scene(root));
+                stage.sizeToScene(); // Điều chỉnh kích thước cửa sổ cho phù hợp với nội dung
+                stage.showAndWait(); // Hiển thị cửa sổ và chờ đến khi nó được đóng
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public void showEmployee() {
+        try {
             FXMLLoader loader = new FXMLLoader();
             loader.setResources(bundle);
             loader.setLocation(Main.class.getResource("/com/example/manage/View/Employee.fxml"));
@@ -200,11 +197,30 @@ public class Main extends Application {
 
             EmployeeController controller = loader.getController();
             controller.setMainApp(this);
+            controller.setUserRole(userRole); // Truyền vai trò người dùng
 
             rootLayout.setCenter(mainPage);
-            primaryStage.sizeToScene();
+            primaryStage.sizeToScene(); // Tự động cập nhật kích thước
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
-        }catch(IOException e){
+    public void showEmployeeDetails(Map<String, String> employeeData) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/manage/View/EmployeeDetails.fxml"));
+            loader.setResources(bundle);
+            Parent root = loader.load();
+
+            EmployeeDetailsController controller = loader.getController();
+            controller.setEmployeeDetails(employeeData);
+
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.setTitle(bundle.getString("employee.details.title"));
+            stage.sizeToScene(); // Điều chỉnh kích thước cửa sổ cho phù hợp với nội dung
+            stage.show();
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -212,39 +228,20 @@ public class Main extends Application {
     public ResourceBundle getBundle() {
         return bundle;
     }
+
     public Stage getPrimaryStage() {
         return primaryStage;
     }
+
+    public void setUserRole(int role) {
+        this.userRole = role;
+    }
+
+    public int getUserRole() {
+        return userRole;
+    }
+
     public static void main(String[] args) {
         launch(args);
-    }
-    public void showEmployeeDetails(Map<String, String> employeeData) {
-        try {
-            // Tạo một FXMLLoader để tải file FXML của trang chi tiết nhân viên
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/manage/View/EmployeeDetails.fxml"));
-
-            // Tải giao diện từ file FXML
-            Parent root = loader.load();
-
-            // Lấy controller liên kết với file FXML
-            EmployeeDetailsController controller = loader.getController();
-
-            // Gọi phương thức setEmployeeDetails của controller để thiết lập thông tin nhân viên
-            controller.setEmployeeDetails(employeeData);
-
-            // Tạo một cửa sổ mới
-            Stage stage = new Stage();
-
-            // Đặt giao diện vào cửa sổ mới
-            stage.setScene(new Scene(root));
-
-            // Đặt tiêu đề cho cửa sổ
-            stage.setTitle("Employee Details");
-
-            // Hiển thị cửa sổ mới
-            stage.show();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 }

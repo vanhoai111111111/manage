@@ -1,16 +1,13 @@
 package com.example.manage.Model;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 
-import static com.example.manage.Model.database.getConnection;
+import static com.example.manage.Model.database.*;
 
 public class LoginModel {
     public static int getRole(String username, String password) {
         String query = "SELECT role FROM tblAdmin WHERE username = ? AND password = ?";
-        try (Connection conn = getConnection();
+        try (Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
              PreparedStatement stmt = conn.prepareStatement(query)) {
 
             stmt.setString(1, username);
@@ -18,6 +15,7 @@ public class LoginModel {
             ResultSet rs = stmt.executeQuery();
 
             if (rs.next()) {
+
                 return rs.getInt("role"); // Trả về giá trị của cột role
             }
         } catch (SQLException e) {

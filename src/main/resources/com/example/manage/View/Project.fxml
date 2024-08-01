@@ -41,10 +41,10 @@
             <ComboBox fx:id="employeeComboBox" prefWidth="622.0" />
 
             <HBox>
-                <Button mnemonicParsing="false" onAction="#addProject" text="%button.add" />
-                <Button mnemonicParsing="false" onAction="#btndelete" text="%button.delete" />
-                <Button mnemonicParsing="false" onAction="#btnupdate" text="%button.edit" />
-                <Button mnemonicParsing="false" text="%button.showdetails" onAction="#showProjectDetails" />
+                <Button mnemonicParsing="false" fx:id="addButton" onAction="#addProject" text="%button.add" />
+                <Button mnemonicParsing="false" fx:id="deleteButton" onAction="#btndelete" text="%button.delete" />
+                <Button mnemonicParsing="false" fx:id="editButton" onAction="#btnupdate" text="%button.edit" />
+                <Button mnemonicParsing="false" fx:id="showDetailsButton" text="%button.showdetails" onAction="#showProjectDetails" />
             </HBox>
         </VBox>
     </bottom>

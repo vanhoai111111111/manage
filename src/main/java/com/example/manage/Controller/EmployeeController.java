@@ -54,7 +54,19 @@ public class EmployeeController {
     @FXML
     private ResourceBundle bundle = ResourceBundle.getBundle("messages");
 
+    @FXML
+    private Button addButton;
+    @FXML
+    private Button deleteButton;
+    @FXML
+    private Button editButton;
+    @FXML
+    private Button showDetailsButton;
+
+    @FXML
     private Main mainApp;
+
+    private int userRole;
 
     @FXML
     public void initialize() {
@@ -72,6 +84,29 @@ public class EmployeeController {
             showemployeeintextfield(newValue);
         });
         loadEmployeeData("");
+        configureUserPermissions();
+    }
+    public void setUserRole(int role) {
+
+        this.userRole = role;
+        configureUserPermissions();
+    }
+    private void configureUserPermissions() {
+        if (userRole ==1) {
+            // Admin có thể thực hiện tất cả các chức năng
+            addButton.setDisable(false);
+            deleteButton.setDisable(false);
+            editButton.setDisable(false);
+            showDetailsButton.setDisable(false);
+
+
+        } else {
+            // Người dùng bình thường không thể thực hiện một số chức năng
+            addButton.setDisable(true);
+            deleteButton.setDisable(true);
+            editButton.setDisable(true);
+            showDetailsButton.setDisable(false);
+        }
     }
 
     public void addEmployee(ActionEvent event) {

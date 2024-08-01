@@ -12,17 +12,16 @@
             prefHeight="400.0" prefWidth="600.0">
     <top>
         <HBox spacing="10" alignment="CENTER">
-            <TextField fx:id="searchField"  />
-            <Button  text="Tìm kiếm" />
+            <TextField fx:id="searchField" onAction="#handSearch"  />
+            <Button  text="Tìm kiếm" onAction="#handSearch" />
         </HBox>
     </top>
     <center>
-
-        <TableView fx:id="Department" prefHeight="400.0" prefWidth="471.0">
+        <TableView fx:id="DepartmentTable" prefHeight="400.0" prefWidth="471.0">
             <columns>
-                <TableColumn fx:id="DepartmentId" prefWidth="100" text="%project.projectId" />
-                <TableColumn fx:id="DepartmentName" prefWidth="150" text="%project.projectName" />
-                <TableColumn fx:id="employeeName" prefWidth="150" text="%project.employee" />
+                <TableColumn fx:id="DepartmentIdCol" prefWidth="100" text="%project.projectId" />
+                <TableColumn fx:id="DepartmentNameCol" prefWidth="150" text="%project.projectName" />
+                <TableColumn fx:id="ManagerCol" prefWidth="150" text="%project.employee" />
             </columns>
         </TableView>
     </center>
@@ -34,16 +33,16 @@
             <TextField fx:id="DepartmentIDTextField" prefWidth="622.0" />
 
             <Label text="%project.projectName" />
-            <TextField fx:id="tenduanTextField" prefWidth="622.0" />
+            <TextField fx:id="DepartmentNameTextField" prefWidth="622.0" />
 
             <Label text="%project.employee" />
-            <ComboBox fx:id="employeeComboBox" prefWidth="622.0" />
+            <ComboBox fx:id="managerCombobox" prefWidth="622.0" />
 
             <HBox>
-                <Button mnemonicParsing="false"  text="%button.add" />
-                <Button mnemonicParsing="false"  text="%button.delete" />
-                <Button mnemonicParsing="false"  text="%button.edit" />
-                <Button mnemonicParsing="false" text="%button.showdetails"  />
+                <Button fx:id="addDepartmentButton" mnemonicParsing="false"  text="%button.add" onAction="#addDepartment"/>
+                <Button fx:id="deleteDepartmentButton" mnemonicParsing="false"  text="%button.delete" onAction="#btndeleteDepartment"/>
+                <Button fx:id="editDepartmentButton" mnemonicParsing="false"  text="%button.edit" onAction="#btnupdate" />
+                <Button fx:id="showDepartmentDetailsButton" mnemonicParsing="false" text="%button.showdetails" onAction="#showDepartmentDetails"  />
             </HBox>
         </VBox>
     </bottom>

@@ -14,20 +14,6 @@ import static com.example.manage.Model.database.getConnection;
 
 public class projectModel {
 
-    public static boolean validateLogin(String username, String password) {
-        String query = "SELECT * FROM tblAdmin WHERE username = ? AND password = ?";
-        try (Connection conn = getConnection();
-             PreparedStatement stmt = conn.prepareStatement(query)) {
-            stmt.setString(1, username);
-            stmt.setString(2, password);
-            ResultSet rs = stmt.executeQuery();
-            return rs.next();
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
-
     public static void loadduanData(ObservableList<Map<String, String>> duanData) {
         loadduanData(duanData, ""); // Load all data initially
     }

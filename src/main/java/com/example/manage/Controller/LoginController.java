@@ -1,5 +1,6 @@
 package com.example.manage.Controller;
 
+import com.example.manage.Model.LoginModel;
 import com.example.manage.Model.projectModel;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -35,7 +36,8 @@ public class LoginController {
         String username = usernameField.getText();
         String password = passwordField.getText();
 
-        if (projectModel.validateLogin(username, password)) {
+        int role = LoginModel.getRole(username, password);
+        if (role !=-1) {
             // Login successful
             mainApp.showMainPage();
         } else {

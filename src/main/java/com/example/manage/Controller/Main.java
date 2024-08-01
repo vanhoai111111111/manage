@@ -22,6 +22,7 @@ public class Main extends Application {
     private Locale locale;
     private ResourceBundle bundle;
 
+
     @Override
     public void start(Stage primaryStage) {
         this.primaryStage = primaryStage;
@@ -125,7 +126,7 @@ public class Main extends Application {
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setResources(bundle);
-            loader.setLocation(Main.class.getResource("/com/example/manage/View/phongban.fxml"));
+            loader.setLocation(Main.class.getResource("/com/example/manage/View/Department.fxml"));
             primaryStage.setTitle(bundle.getString("dashboard.title"));
             BorderPane mainPage = loader.load();
 
@@ -140,15 +141,15 @@ public class Main extends Application {
         }
     }
 
-    public void showProjectDetails(Map<String, String> selectedItem) {
-        if (selectedItem != null) {
+    public void showProjectDetails(Map<String, String> SelectedDepartment) {
+        if (SelectedDepartment != null) {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/manage/View/projectDetails.fxml"));
                 loader.setResources(bundle);
                 Parent root = loader.load();
 
                 ProjectDetailsController controller = loader.getController();
-                controller.setProjectDetails(selectedItem);
+                controller.setProjectDetails(SelectedDepartment);
 
                 Stage stage = new Stage();
                 primaryStage.setTitle(bundle.getString("dashboard.title"));
@@ -163,6 +164,32 @@ public class Main extends Application {
             }
         }
     }
+    public void showDepartmentDetails(Map<String, String> SelectedDepartment) {
+        if (SelectedDepartment != null) {
+            try {
+                // Tải FXML cho cửa sổ chi tiết
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/manage/View/departmentDetails.fxml"));
+                loader.setResources(bundle);
+                Parent root = loader.load();
+
+                // Cấu hình controller cho cửa sổ chi tiết
+                DepartmentDetailsController controller = loader.getController();
+                controller.setDepartmentDetails(SelectedDepartment);
+
+                // Tạo và hiển thị cửa sổ chi tiết
+                Stage stage = new Stage();
+                stage.setTitle(bundle.getString("dashboard.title")); // Đặt tiêu đề cửa sổ
+                stage.initModality(Modality.WINDOW_MODAL);
+                stage.initOwner(primaryStage);
+                stage.setScene(new Scene(root));
+                stage.sizeToScene(); // Điều chỉnh kích thước cửa sổ cho phù hợp với nội dung
+                stage.showAndWait(); // Hiển thị cửa sổ và chờ đến khi nó được đóng
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
     public void showEmployee (){
         try{
             FXMLLoader loader = new FXMLLoader();
